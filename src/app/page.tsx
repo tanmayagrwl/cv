@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CommandMenu } from "@/components/command-menu";
@@ -67,7 +67,7 @@ export default function Page() {
                   size="icon"
                   asChild
                 >
-                  <a href={social.url}>
+                  <a href={social.url} target="_blank" rel="noreferrer">
                     <social.icon className="h-4 w-4" />
                   </a>
                 </Button>
@@ -89,7 +89,6 @@ export default function Page() {
 
           <Avatar className="h-28 w-28">
             <AvatarImage alt={RESUME_DATA.name} src={RESUME_DATA.avatarUrl} />
-            <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
           </Avatar>
         </div>
         <Section>
@@ -99,17 +98,39 @@ export default function Page() {
           </p>
         </Section>
         <Section>
+          <h2 className="text-xl font-bold">Education</h2>
+          {RESUME_DATA.education.map((education) => {
+            return (
+              <Card key={education.school}>
+                <CardHeader>
+                  <div className="flex items-center justify-between gap-x-2 text-base">
+                    <a
+                      href={education.link}
+                      className="font-semibold leading-none hover:underline"
+                    >
+                      {education.school}
+                    </a>
+                    <div className="text-sm tabular-nums text-gray-500">
+                      {education.start} - {education.end}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="mt-2">{education.degree}</CardContent>
+              </Card>
+            );
+          })}
+        </Section>
+        <Section>
           <h2 className="text-xl font-bold">Work Experience</h2>
           {RESUME_DATA.work.map((work) => {
             return (
               <Card key={work.company}>
                 <CardHeader>
                   <div className="flex items-center justify-between gap-x-2 text-base">
-                    <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
+                    <h3 className="inline-flex flex-wrap items-center gap-x-1 gap-y-2 font-semibold leading-none">
                       <a className="hover:underline" href={work.link}>
                         {work.company}
                       </a>
-
                       <span className="inline-flex gap-x-1">
                         {work.badges.map((badge) => (
                           <Badge
@@ -132,28 +153,68 @@ export default function Page() {
                   </h4>
                 </CardHeader>
                 <CardContent className="mt-2 text-xs">
-                  {work.description}
+                  {Array.isArray(work.description) ? (
+                    <ul className="my-2 ml-4 list-disc">
+                      {work.description.map((description) => (
+                        <li className="mt-1" key={description}>
+                          {description}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    work.description
+                  )}
                 </CardContent>
               </Card>
             );
           })}
         </Section>
         <Section>
-          <h2 className="text-xl font-bold">Education</h2>
-          {RESUME_DATA.education.map((education) => {
+          <h2 className="text-xl font-bold">Organisations</h2>
+          {RESUME_DATA.organisations.map((org) => {
             return (
-              <Card key={education.school}>
+              <Card key={org.name}>
                 <CardHeader>
                   <div className="flex items-center justify-between gap-x-2 text-base">
-                    <h3 className="font-semibold leading-none">
-                      {education.school}
+                    <h3 className="inline-flex flex-wrap items-center gap-x-1 gap-y-2 font-semibold leading-none">
+                      <a className="hover:underline" href={org.link}>
+                        {org.name}
+                      </a>
+
+                      <span className="inline-flex gap-x-1">
+                        {org.badges.map((badge) => (
+                          <Badge
+                            variant="secondary"
+                            className="align-middle text-xs"
+                            key={badge}
+                          >
+                            {badge}
+                          </Badge>
+                        ))}
+                      </span>
                     </h3>
                     <div className="text-sm tabular-nums text-gray-500">
-                      {education.start} - {education.end}
+                      {org.start} - {org.end}
                     </div>
                   </div>
+
+                  <h4 className="font-mono text-sm leading-none">
+                    {org.title}
+                  </h4>
                 </CardHeader>
-                <CardContent className="mt-2">{education.degree}</CardContent>
+                <CardContent className="mt-2 text-xs">
+                  {Array.isArray(org.description) ? (
+                    <ul className="my-2 ml-4 list-disc">
+                      {org.description.map((description) => (
+                        <li className="mt-1" key={description}>
+                          {description}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    org.description
+                  )}
+                </CardContent>
               </Card>
             );
           })}
@@ -161,23 +222,38 @@ export default function Page() {
         <Section>
           <h2 className="text-xl font-bold">Skills</h2>
           <div className="flex flex-wrap gap-1">
-            {RESUME_DATA.skills.map((skill) => {
-              return <Badge key={skill}>{skill}</Badge>;
-            })}
+            <div className="grid grid-cols-1 gap-3 print:grid-cols-2 print:gap-2 md:grid-cols-2">
+              {RESUME_DATA.skillset.map((skill) => {
+                return (
+                  <Card key={skill.label}>
+                    <CardHeader>
+                      <h3 className="text-base font-semibold leading-none">
+                        {skill.label}
+                      </h3>
+                    </CardHeader>
+                    <CardContent className="mt-3 flex flex-wrap gap-1">
+                      {skill.skills.map((skill) => (
+                        <Badge key={skill}>{skill}</Badge>
+                      ))}
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
         </Section>
 
-        <Section className="print-force-new-page scroll-mb-16">
+        <Section className="scroll-mb-16">
           <h2 className="text-xl font-bold">Projects</h2>
-          <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
+          <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-2 print:gap-2 md:grid-cols-2">
             {RESUME_DATA.projects.map((project) => {
               return (
                 <ProjectCard
                   key={project.title}
                   title={project.title}
                   description={project.description}
-                  tags={project.techStack}
-                  link={"link" in project ? project.link.href : undefined}
+                  techStack={project.techStack}
+                  link={project.link}
                 />
               );
             })}

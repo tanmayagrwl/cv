@@ -6,15 +6,11 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { ResumeData } from "@/lib/types";
 
-interface Props {
-  title: string;
-  description: string;
-  tags: readonly string[];
-  link?: string;
-}
+type Props = ResumeData["projects"][number];
 
-export function ProjectCard({ title, description, tags, link }: Props) {
+export function ProjectCard({ title, description, techStack, link }: Props) {
   return (
     <Card className="flex flex-col overflow-hidden border border-muted p-3">
       <CardHeader className="">
@@ -22,7 +18,7 @@ export function ProjectCard({ title, description, tags, link }: Props) {
           <CardTitle className="text-base">
             {link ? (
               <a
-                href={link}
+                href={link.href}
                 target="_blank"
                 className="inline-flex items-center gap-1 hover:underline"
               >
@@ -34,22 +30,35 @@ export function ProjectCard({ title, description, tags, link }: Props) {
             )}
           </CardTitle>
           <div className="hidden font-mono text-xs underline print:visible">
-            {link?.replace("https://", "").replace("www.", "").replace("/", "")}
+            {link?.href
+              .replace("https://", "")
+              .replace("www.", "")
+              .replace("/", "")}
           </div>
           <CardDescription className="font-mono text-xs">
-            {description}
+            {Array.isArray(description) ? (
+              <ul className="my-2 ml-4 list-disc">
+                {description.map((description) => (
+                  <li className="mt-1" key={description}>
+                    {description}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              description
+            )}
           </CardDescription>
         </div>
       </CardHeader>
       <CardContent className="mt-auto flex">
         <div className="mt-2 flex flex-wrap gap-1">
-          {tags.map((tag) => (
+          {techStack.map((stack) => (
             <Badge
               className="px-1 py-0 text-[10px]"
               variant="secondary"
-              key={tag}
+              key={stack}
             >
-              {tag}
+              {stack}
             </Badge>
           ))}
         </div>
