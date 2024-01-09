@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: RESUME_DATA.summary,
     images: [
       {
-        url: 'https://jatinkumar.dev/cover.webp',
+        url: 'https://jatinkumar.dev/cover.png',
       },
     ],
   },
