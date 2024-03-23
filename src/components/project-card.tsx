@@ -1,4 +1,4 @@
-import { ResumeData } from '@/lib/types';
+import type { ResumeData } from '@/lib/types';
 import { Badge } from './ui/badge';
 import {
   Card,
