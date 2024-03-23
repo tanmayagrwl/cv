@@ -1,4 +1,3 @@
-import WorkHeader from '@/components/work-header';
 import { CommandMenu } from '@/components/command-menu';
 import { ProjectCard } from '@/components/project-card';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
@@ -6,10 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Section } from '@/components/ui/section';
+import Ul from '@/components/ul';
+import WorkHeader from '@/components/work-header';
 import { RESUME_DATA } from '@/data/resume-data';
 import { DownloadIcon, GlobeIcon, MailIcon, PhoneIcon } from 'lucide-react';
-import { Metadata } from 'next';
-import Ul from '@/components/ul';
 
 export default function Page() {
   return (
@@ -83,10 +82,10 @@ export default function Page() {
               ))}
               <Button className="size-8" variant="outline" size="icon" asChild>
                 <a
-                  href="/cv.pdf"
+                  href="/jatin-resume.pdf"
                   target="_blank"
                   rel="noreferrer"
-                  download="jatin-kumar.pdf"
+                  download={true}
                   aria-label="download"
                 >
                   <DownloadIcon className="size-4" />

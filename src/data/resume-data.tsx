@@ -1,4 +1,4 @@
-import { ResumeData } from '@/lib/types';
+import type { ResumeData } from '@/lib/types';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
 
 export const RESUME_DATA: ResumeData = {
@@ -131,13 +131,7 @@ export const RESUME_DATA: ResumeData = {
     },
     {
       title: 'TinyBits',
-      techStack: [
-        'GoLang',
-        'TypeScript',
-        'Remix',
-        'PostgreSQL',
-        'Redis',
-      ],
+      techStack: ['GoLang', 'TypeScript', 'Remix', 'PostgreSQL', 'Redis'],
       link: {
         href: 'https://github.com/jatindotdev/tinybits',
         label: 'GitHub',
@@ -146,7 +140,7 @@ export const RESUME_DATA: ResumeData = {
         'Developing a URL shortener backend in GoLang, primarily for learning the language for a club project.',
         'Expanded it into a full-stack application by incorporating Remix.',
         'Leveraged Redis for caching and PostgreSQL for the database without using an ORM.',
-        'Ongoing development as an open-source project, still a work in progress.'
+        'Ongoing development as an open-source project, still a work in progress.',
       ],
     },
     {
