@@ -27,7 +27,7 @@ export const RESUME_DATA: ResumeData = {
       },
       {
         name: 'Twitter',
-        url: 'https://twitter.com/jatindotdev',
+        url: 'https://twitter.com/whynotjatin',
         icon: TwitterIcon,
       },
     ],
