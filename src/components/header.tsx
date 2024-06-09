@@ -6,7 +6,6 @@ export function Header() {
 
   const handleDownload = async () => {
     setIsDownloading(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
     const link = document.createElement('a');
     link.href = '/jatin-resume.pdf';
     link.download = 'jatin-resume.pdf';
