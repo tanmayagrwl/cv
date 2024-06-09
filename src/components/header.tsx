@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { DownloadIcon, Spinner } from './icons';
+import { DownloadIcon, Spinner } from '@/components/icons';
+import { cn } from '@/lib/utils';
 
-export function Header() {
+type HeaderProps = React.ComponentProps<'div'>;
+
+export function Header({ className, ...props }: HeaderProps) {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = async () => {
@@ -14,7 +17,13 @@ export function Header() {
   };
 
   return (
-    <header className="w-full flex items-center justify-between p-4">
+    <header
+      className={cn(
+        'w-full flex items-center justify-between p-4',
+        className,
+      )}
+      {...props}
+    >
       <a href="/" className="flex items-center outline-none focus-visible:text-gray-900/90 hover:text-gray-900/90">
         <img src="/logo.png" alt="Logo" className="h-9 w-9" />
       </a>
