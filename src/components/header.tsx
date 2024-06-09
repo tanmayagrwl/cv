@@ -14,10 +14,9 @@ export function Header() {
   };
 
   return (
-    <header className="z-10 w-full flex items-center justify-between px-3 pt-[24px] lg:px-6 md:px-6 sm:px-4 xl:px-10 lg:pt-[26px]">
+    <header className="w-full flex items-center justify-between p-4">
       <a href="/" className="flex items-center outline-none focus-visible:text-gray-900/90 hover:text-gray-900/90">
         <img src="/logo.png" alt="Logo" className="h-9 w-9" />
-        <span className="ml-2 text-2xl font-bold">Jatin</span>
       </a>
       <div>
         <button disabled={isDownloading} onClick={handleDownload} type="button" className="h-9 w-9 flex cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-md border-none bg-gray-900 text-white font-bold outline-none focus-visible:bg-gray-900/90 hover:bg-gray-900/90">
