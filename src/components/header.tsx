@@ -19,18 +19,18 @@ export function Header({ className, ...props }: HeaderProps) {
   return (
     <header
       className={cn(
-        'w-full flex items-center justify-between p-4',
+        'w-full flex items-center justify-between pt-6.5 px-10',
         className,
       )}
       {...props}
     >
       <a href="/" className="flex items-center outline-none focus-visible:text-gray-900/90 hover:text-gray-900/90">
-        <img src="/logo.png" alt="Logo" className="h-9 w-9" />
+        <img src="/logo.png" alt="Logo" className="h-9 w-9 lg:h-12 lg:w-12" />
       </a>
       <div>
-        <button disabled={isDownloading} onClick={handleDownload} type="button" className="h-9 w-9 flex cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-md border-none bg-gray-900 text-white font-bold outline-none focus-visible:bg-gray-900/90 hover:bg-gray-900/90">
+        <button disabled={isDownloading} onClick={handleDownload} type="button" className="aspect-square h-9 flex cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-md border-none bg-gray-900 text-white font-bold outline-none lg:h-12 focus-visible:bg-gray-900/90 hover:bg-gray-900/90">
           {
-            isDownloading ? <Spinner className="h-5 w-5" /> : <DownloadIcon className="h-5 w-5" />
+            isDownloading ? <Spinner className="h-5.5 w-5.5" /> : <DownloadIcon className="h-5.5 w-5.5" />
           }
         </button>
       </div>
