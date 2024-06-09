@@ -8,6 +8,9 @@ export default defineConfig({
     fontFamily: {
       sans: 'Google Sans, sans-serif',
     },
+    colors: {
+      background: 'var(--background)',
+    },
   },
   presets: [presetUno()],
 });

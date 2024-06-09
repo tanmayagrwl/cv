@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@unocss/reset':
-        specifier: ^0.60.4
-        version: 0.60.4
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -42,6 +39,9 @@ importers:
       '@unocss/postcss':
         specifier: ^0.60.4
         version: 0.60.4(postcss@8.4.38)
+      '@unocss/reset':
+        specifier: ^0.60.4
+        version: 0.60.4
       eslint:
         specifier: 9.4.0
         version: 9.4.0
