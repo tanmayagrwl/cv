@@ -1,11 +1,29 @@
-# Minimalist CV
+# Rsbuild Project
 
-Simple web app that renders minimalist CV with print-friendly layout.
+## Setup
 
-Built with Next.js and shadcn/ui, deployed on Vercel.
+Install the dependencies:
 
-or directly download my CV [here](https://cdn.jsdelivr.net/gh/jatindotdev/cv/public/cv.pdf)
+```bash
+pnpm install
+```
 
-# License
+## Get Started
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Start the dev server:
+
+```bash
+pnpm dev
+```
+
+Build the app for production:
+
+```bash
+pnpm build
+```
+
+Preview the production build locally:
+
+```bash
+pnpm preview
+```

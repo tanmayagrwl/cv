@@ -1,0 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Google+Sans:400,500,600,700);
+@import '@unocss/reset/tailwind-compat.css';
+@unocss preflights;
+@unocss default;
+
+body {
+  @apply font-sans antialiased;
+}
