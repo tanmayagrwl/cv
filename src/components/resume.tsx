@@ -50,7 +50,7 @@ export function Resume({ className, ...props }: ResumeProps) {
         options={documentOptions}
         loading={(
           <div
-            className="bg-pdf flex justify-center rounded-md pt-20 shadow-uniform"
+            className="flex justify-center rounded-md bg-pdf pt-20 shadow-uniform"
             style={{
               width: MAX_WIDTH,
               height: MAX_HEIGHT,
@@ -69,7 +69,7 @@ export function Resume({ className, ...props }: ResumeProps) {
             pageNumber={i + 1}
             loading={(
               <div
-                className="bg-pdf flex justify-center rounded-md pt-20 shadow-uniform"
+                className="flex justify-center rounded-md bg-pdf pt-20 shadow-uniform"
                 style={{
                   width: MAX_WIDTH,
                   height: MAX_HEIGHT,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { cn, toKebabCase } from '@/lib/utils';
 import { DownloadIcon, Spinner } from '@/components/icons';
-import { cn } from '@/lib/utils';
 import { siteConfig } from '@/lib/site-config';
 
 type HeaderProps = React.ComponentProps<'div'>;
@@ -11,7 +11,7 @@ export function Header({ className, ...props }: HeaderProps) {
   const handleDownload = async () => {
     setIsDownloading(true);
     const link = document.createElement('a');
-    const filename = `${siteConfig.name.toLowerCase()}-resume.pdf`;
+    const filename = `${toKebabCase(siteConfig.name)}-resume.pdf`;
     link.href = filename;
     link.download = filename;
     link.click();
