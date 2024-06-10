@@ -10,6 +10,10 @@ export default defineConfig({
     },
     colors: {
       background: 'var(--background)',
+      pdf: 'var(--pdf-background)',
+    },
+    boxShadow: {
+      uniform: 'var(--shadow-uniform)',
     },
   },
   presets: [presetUno()],

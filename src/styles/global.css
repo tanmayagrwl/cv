@@ -5,6 +5,8 @@
 
 :root {
   --background: #f0eeeb;
+  --pdf-background: #f4f2f0;
+  --shadow-uniform: 0px 0px 4.5px 0px rgba(120, 120, 120, 0.4);
 }
 
 body {
