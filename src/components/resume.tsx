@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Document, type DocumentProps, Page, pdfjs } from 'react-pdf';
 import { Spinner } from './icons';
-import { cn } from '@/lib/utils';
+import { cn, toKebabCase } from '@/lib/utils';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { useResizeObserver } from '@/lib/hooks/use-resize-observer';
+import { siteConfig } from '@/lib/site-config';
 
 type ResumeProps = React.ComponentProps<'section'>;
 
@@ -45,7 +46,7 @@ export function Resume({ className, ...props }: ResumeProps) {
       {...props}
     >
       <Document
-        file="/jatin-resume.pdf"
+        file={`${toKebabCase(siteConfig.name)}-resume.pdf`}
         className="px-4 space-y-4 sm:space-y-8"
         options={documentOptions}
         loading={(
