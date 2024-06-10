@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Document, type DocumentProps, Page, pdfjs } from 'react-pdf';
 import { Spinner } from './icons';
 import { cn } from '@/lib/utils';

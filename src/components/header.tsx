@@ -32,7 +32,7 @@ export function Header({ className, ...props }: HeaderProps) {
         rel="noreferrer"
         className="flex items-center shadow-md outline-none focus-visible:text-gray-900/90 hover:text-gray-900/90"
       >
-        <img src="/logo.png" alt="Logo" className="h-9 w-9 lg:h-12 lg:w-12" />
+        <img src="/logo.png" alt="Logo" className="h-9 w-9 rounded-md lg:h-12 lg:w-12" />
       </a>
       <button disabled={isDownloading} onClick={handleDownload} type="button" className="aspect-square h-9 flex cursor-pointer cursor-pointer touch-manipulation appearance-none items-center justify-center rounded-md border-none bg-gray-900 text-white font-bold shadow-md outline-none lg:h-12 focus-visible:bg-gray-900/90 hover:bg-gray-900/90">
         {
