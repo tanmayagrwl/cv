@@ -15,13 +15,14 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const MAX_WIDTH = 896;
-const MAX_HEIGHT = 1268;
 const PADDING = 16;
 
 export function Resume({ className, ...props }: ResumeProps) {
   const [numPages, setNumPages] = useState<number>(0);
-  const [width, setWidth] = useState<number>(MAX_WIDTH);
   const { width: windowWidth } = useResizeObserver();
+
+  const newWidth = windowWidth - PADDING * 2;
+  const [width, setWidth] = useState<number>(newWidth > MAX_WIDTH ? MAX_WIDTH : newWidth);
 
   const documentOptions = useMemo(() => ({
     cMapUrl: '/cmaps/',
@@ -47,14 +48,13 @@ export function Resume({ className, ...props }: ResumeProps) {
     >
       <Document
         file={`${toKebabCase(siteConfig.name)}-resume.pdf`}
-        className="px-4 space-y-4 sm:space-y-8"
+        className="aspect-896/1268 px-4 space-y-4 sm:space-y-8"
         options={documentOptions}
         loading={(
           <div
-            className="flex justify-center rounded-md bg-pdf pt-20 shadow-uniform"
+            className="aspect-896/1268 flex justify-center rounded-md bg-pdf pt-20 shadow-uniform"
             style={{
-              width: MAX_WIDTH,
-              height: MAX_HEIGHT,
+              width,
             }}
           >
             <Spinner className="h-10 w-10 opacity-50" />
@@ -70,10 +70,9 @@ export function Resume({ className, ...props }: ResumeProps) {
             pageNumber={i + 1}
             loading={(
               <div
-                className="flex justify-center rounded-md bg-pdf pt-20 shadow-uniform"
+                className="aspect-896/1268 flex justify-center rounded-md bg-pdf pt-20 shadow-uniform"
                 style={{
-                  width: MAX_WIDTH,
-                  height: MAX_HEIGHT,
+                  width,
                 }}
               >
                 <Spinner className="h-10 w-10 opacity-50" />
