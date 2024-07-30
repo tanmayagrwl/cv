@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 
 export const useResizeObserver = (options?: ResizeObserverOptions) => {
   const element = document.documentElement;
@@ -6,11 +6,15 @@ export const useResizeObserver = (options?: ResizeObserverOptions) => {
   const [width, setWidth] = useState<number>(element.clientWidth);
   const [height, setHeight] = useState<number>(element.clientHeight);
 
-  const observer = useMemo(() => new ResizeObserver((entries) => {
-    const entry = entries[0];
-    setWidth(entry.contentRect.width);
-    setHeight(entry.contentRect.height);
-  }), []);
+  const observer = useMemo(
+    () =>
+      new ResizeObserver(entries => {
+        const entry = entries[0];
+        setWidth(entry.contentRect.width);
+        setHeight(entry.contentRect.height);
+      }),
+    []
+  );
 
   useEffect(() => {
     if (element) {
@@ -22,10 +26,10 @@ export const useResizeObserver = (options?: ResizeObserverOptions) => {
         observer.unobserve(element);
       }
     };
-  }, [element, observer]);
+  }, [element, observer, options]);
 
   return {
     width,
-    height
-  }
-}
+    height,
+  };
+};
