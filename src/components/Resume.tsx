@@ -75,7 +75,7 @@ export default function Resume({ className, ...props }: ResumeProps) {
       {...props}
     >
       <Document
-        file={'jatin-resume.pdf'}
+        file={'tanmay-resume.pdf'}
         className="aspect-[768/1087] space-y-4 sm:space-y-8"
         loading={
           <div
